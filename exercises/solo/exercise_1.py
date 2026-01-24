@@ -21,22 +21,24 @@ INSTRUCTIONS:
 def reverse_string(s: str) -> str:
     """
     Reverse the input string.
-    
+
     Examples:
         reverse_string("hello") → "olleh"
         reverse_string("Python") → "nohtyP"
         reverse_string("") → ""
         reverse_string("a") → "a"
-    
+
     Args:
         s: The string to reverse
-        
+
     Returns:
         The reversed string
     """
+
     # TODO: Implement this function
     # Hint: Python has a simple way to reverse strings using slicing
-    pass
+    def reverse_string(s: str) -> str:
+        return s[::-1]
 
 
 # Don't modify below this line - used for local testing
@@ -48,12 +50,14 @@ if __name__ == "__main__":
         ("a", "a"),
         ("12345", "54321"),
     ]
-    
+
     print("Testing reverse_string...")
     for input_val, expected in test_cases:
         result = reverse_string(input_val)
         status = "✅" if result == expected else "❌"
-        print(f"  {status} reverse_string('{input_val}') = '{result}' (expected '{expected}')")
+        print(
+            f"  {status} reverse_string('{input_val}') = '{result}' (expected '{expected}')"
+        )
 
 
 """
