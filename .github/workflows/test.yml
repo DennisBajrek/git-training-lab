@@ -25,19 +25,59 @@ jobs:
         pip install pytest
     
     - name: Run tests
+      continue-on-error: true
       run: |
-        pytest tests/ -v --tb=short
+        pytest tests/ -v --tb=line 2>&1 | tee test_output.txt
     
-    - name: Test Summary
+    - name: Generate Progress Report
       if: always()
       run: |
-        echo "================================"
-        echo "  Git Training Lab - Results"
-        echo "================================"
         echo ""
-        echo "Check the test output above to see which exercises passed!"
+        echo "╔═══════════════════════════════════════════════════════════════╗"
+        echo "║           🎓 GIT TRAINING LAB - PROGRESS REPORT 🎓            ║"
+        echo "╚═══════════════════════════════════════════════════════════════╝"
         echo ""
-        echo "✅ = Exercise complete"
-        echo "❌ = Exercise needs work"
+        
+        # Count passed and failed
+        PASSED=$(grep -c "PASSED" test_output.txt 2>/dev/null || echo "0")
+        FAILED=$(grep -c "FAILED" test_output.txt 2>/dev/null || echo "0")
+        TOTAL=$((PASSED + FAILED))
+        
+        echo "📊 Overall: $PASSED / $TOTAL tests passing"
         echo ""
-        echo "Don't worry about failures - they're expected until you implement the solutions!"
+        
+        # Function to check exercise status
+        check_exercise() {
+          local name="$1"
+          local label="$2"
+          local pass_count=$(grep "Test${name}.*PASSED" test_output.txt 2>/dev/null | wc -l)
+          local total_count=$(grep "Test${name}::" test_output.txt 2>/dev/null | wc -l)
+          
+          if [ "$pass_count" -eq "$total_count" ] && [ "$total_count" -gt 0 ]; then
+            printf "✅ %-35s - COMPLETE (%d/%d)\n" "$label" "$pass_count" "$total_count"
+          else
+            printf "⬜ %-35s - %d/%d passing\n" "$label" "$pass_count" "$total_count"
+          fi
+        }
+        
+        check_exercise "Exercise1" "Exercise 1 (Reverse String)"
+        check_exercise "Exercise2" "Exercise 2 (FizzBuzz)"
+        check_exercise "Exercise3" "Exercise 3 (Find Max)"
+        check_exercise "Exercise4" "Exercise 4 (Count Vowels)"
+        check_exercise "Exercise5" "Exercise 5 (Palindrome)"
+        check_exercise "Exercise6" "Exercise 6 (Two Sum)"
+        check_exercise "Exercise7" "Exercise 7 (Merge Arrays)"
+        check_exercise "Exercise8" "Exercise 8 (Group Anagrams)"
+        check_exercise "Exercise9" "Exercise 9 (Valid Parentheses)"
+        
+        echo ""
+        echo "─────────────────────────────────────────────────────────────────"
+        
+        if [ "$PASSED" -eq "$TOTAL" ] && [ "$TOTAL" -gt 0 ]; then
+          echo "🎉 CONGRATULATIONS! All exercises complete!"
+        else
+          echo "💪 Keep going! Complete the exercises marked with ⬜"
+          echo ""
+          echo "Tip: Failing tests are expected until you implement the solutions!"
+        fi
+        echo ""
