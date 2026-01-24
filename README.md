@@ -68,7 +68,7 @@ By the end of this lab, you will:
 1. **Fork this repository** (click "Fork" button on GitHub)
 2. **Clone your fork:**
    ```bash
-   git clone https://github.com/YOUR-USERNAME/git-training-lab.git
+   git clone https://github.com/RubyHawk/git-training-lab.git
    cd git-training-lab
    ```
 3. **Verify setup:**
