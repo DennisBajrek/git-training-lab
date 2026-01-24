@@ -25,7 +25,6 @@ jobs:
         pip install pytest
     
     - name: Run tests
-      id: tests
       continue-on-error: true
       run: |
         pytest tests/ -v --tb=line 2>&1 | tee test_output.txt
@@ -40,98 +39,41 @@ jobs:
         echo ""
         
         # Count passed and failed
-        PASSED=$(grep -c "PASSED" test_output.txt || echo "0")
-        FAILED=$(grep -c "FAILED" test_output.txt || echo "0")
+        PASSED=$(grep -c "PASSED" test_output.txt 2>/dev/null || echo "0")
+        FAILED=$(grep -c "FAILED" test_output.txt 2>/dev/null || echo "0")
         TOTAL=$((PASSED + FAILED))
         
         echo "📊 Overall: $PASSED / $TOTAL tests passing"
         echo ""
         
-        # Exercise 1
-        EX1_PASS=$(grep -c "TestExercise1.*PASSED" test_output.txt || echo "0")
-        EX1_TOTAL=$(grep -c "TestExercise1" test_output.txt || echo "0")
-        if [ "$EX1_PASS" -eq "$EX1_TOTAL" ] && [ "$EX1_TOTAL" -gt 0 ]; then
-          echo "✅ Exercise 1 (Reverse String)      - COMPLETE ($EX1_PASS/$EX1_TOTAL)"
-        else
-          echo "⬜ Exercise 1 (Reverse String)      - $EX1_PASS/$EX1_TOTAL passing"
-        fi
+        # Function to check exercise status
+        check_exercise() {
+          local name="$1"
+          local label="$2"
+          local pass_count=$(grep "Test${name}.*PASSED" test_output.txt 2>/dev/null | wc -l)
+          local total_count=$(grep "Test${name}::" test_output.txt 2>/dev/null | wc -l)
+          
+          if [ "$pass_count" -eq "$total_count" ] && [ "$total_count" -gt 0 ]; then
+            printf "✅ %-35s - COMPLETE (%d/%d)\n" "$label" "$pass_count" "$total_count"
+          else
+            printf "⬜ %-35s - %d/%d passing\n" "$label" "$pass_count" "$total_count"
+          fi
+        }
         
-        # Exercise 2
-        EX2_PASS=$(grep -c "TestExercise2.*PASSED" test_output.txt || echo "0")
-        EX2_TOTAL=$(grep -c "TestExercise2" test_output.txt || echo "0")
-        if [ "$EX2_PASS" -eq "$EX2_TOTAL" ] && [ "$EX2_TOTAL" -gt 0 ]; then
-          echo "✅ Exercise 2 (FizzBuzz)            - COMPLETE ($EX2_PASS/$EX2_TOTAL)"
-        else
-          echo "⬜ Exercise 2 (FizzBuzz)            - $EX2_PASS/$EX2_TOTAL passing"
-        fi
-        
-        # Exercise 3
-        EX3_PASS=$(grep -c "TestExercise3.*PASSED" test_output.txt || echo "0")
-        EX3_TOTAL=$(grep -c "TestExercise3" test_output.txt || echo "0")
-        if [ "$EX3_PASS" -eq "$EX3_TOTAL" ] && [ "$EX3_TOTAL" -gt 0 ]; then
-          echo "✅ Exercise 3 (Find Max)            - COMPLETE ($EX3_PASS/$EX3_TOTAL)"
-        else
-          echo "⬜ Exercise 3 (Find Max)            - $EX3_PASS/$EX3_TOTAL passing"
-        fi
-        
-        # Exercise 4
-        EX4_PASS=$(grep -c "TestExercise4.*PASSED" test_output.txt || echo "0")
-        EX4_TOTAL=$(grep -c "TestExercise4" test_output.txt || echo "0")
-        if [ "$EX4_PASS" -eq "$EX4_TOTAL" ] && [ "$EX4_TOTAL" -gt 0 ]; then
-          echo "✅ Exercise 4 (Count Vowels)        - COMPLETE ($EX4_PASS/$EX4_TOTAL)"
-        else
-          echo "⬜ Exercise 4 (Count Vowels)        - $EX4_PASS/$EX4_TOTAL passing"
-        fi
-        
-        # Exercise 5
-        EX5_PASS=$(grep -c "TestExercise5.*PASSED" test_output.txt || echo "0")
-        EX5_TOTAL=$(grep -c "TestExercise5" test_output.txt || echo "0")
-        if [ "$EX5_PASS" -eq "$EX5_TOTAL" ] && [ "$EX5_TOTAL" -gt 0 ]; then
-          echo "✅ Exercise 5 (Palindrome)          - COMPLETE ($EX5_PASS/$EX5_TOTAL)"
-        else
-          echo "⬜ Exercise 5 (Palindrome)          - $EX5_PASS/$EX5_TOTAL passing"
-        fi
-        
-        # Exercise 6
-        EX6_PASS=$(grep -c "TestExercise6.*PASSED" test_output.txt || echo "0")
-        EX6_TOTAL=$(grep -c "TestExercise6" test_output.txt || echo "0")
-        if [ "$EX6_PASS" -eq "$EX6_TOTAL" ] && [ "$EX6_TOTAL" -gt 0 ]; then
-          echo "✅ Exercise 6 (Two Sum)             - COMPLETE ($EX6_PASS/$EX6_TOTAL)"
-        else
-          echo "⬜ Exercise 6 (Two Sum)             - $EX6_PASS/$EX6_TOTAL passing"
-        fi
-        
-        # Exercise 7
-        EX7_PASS=$(grep -c "TestExercise7.*PASSED" test_output.txt || echo "0")
-        EX7_TOTAL=$(grep -c "TestExercise7" test_output.txt || echo "0")
-        if [ "$EX7_PASS" -eq "$EX7_TOTAL" ] && [ "$EX7_TOTAL" -gt 0 ]; then
-          echo "✅ Exercise 7 (Merge Arrays)        - COMPLETE ($EX7_PASS/$EX7_TOTAL)"
-        else
-          echo "⬜ Exercise 7 (Merge Arrays)        - $EX7_PASS/$EX7_TOTAL passing"
-        fi
-        
-        # Exercise 8
-        EX8_PASS=$(grep -c "TestExercise8.*PASSED" test_output.txt || echo "0")
-        EX8_TOTAL=$(grep -c "TestExercise8" test_output.txt || echo "0")
-        if [ "$EX8_PASS" -eq "$EX8_TOTAL" ] && [ "$EX8_TOTAL" -gt 0 ]; then
-          echo "✅ Exercise 8 (Group Anagrams)      - COMPLETE ($EX8_PASS/$EX8_TOTAL)"
-        else
-          echo "⬜ Exercise 8 (Group Anagrams)      - $EX8_PASS/$EX8_TOTAL passing"
-        fi
-        
-        # Exercise 9
-        EX9_PASS=$(grep -c "TestExercise9.*PASSED" test_output.txt || echo "0")
-        EX9_TOTAL=$(grep -c "TestExercise9" test_output.txt || echo "0")
-        if [ "$EX9_PASS" -eq "$EX9_TOTAL" ] && [ "$EX9_TOTAL" -gt 0 ]; then
-          echo "✅ Exercise 9 (Valid Parentheses)   - COMPLETE ($EX9_PASS/$EX9_TOTAL)"
-        else
-          echo "⬜ Exercise 9 (Valid Parentheses)   - $EX9_PASS/$EX9_TOTAL passing"
-        fi
+        check_exercise "Exercise1" "Exercise 1 (Reverse String)"
+        check_exercise "Exercise2" "Exercise 2 (FizzBuzz)"
+        check_exercise "Exercise3" "Exercise 3 (Find Max)"
+        check_exercise "Exercise4" "Exercise 4 (Count Vowels)"
+        check_exercise "Exercise5" "Exercise 5 (Palindrome)"
+        check_exercise "Exercise6" "Exercise 6 (Two Sum)"
+        check_exercise "Exercise7" "Exercise 7 (Merge Arrays)"
+        check_exercise "Exercise8" "Exercise 8 (Group Anagrams)"
+        check_exercise "Exercise9" "Exercise 9 (Valid Parentheses)"
         
         echo ""
         echo "─────────────────────────────────────────────────────────────────"
         
-        if [ "$PASSED" -eq "$TOTAL" ]; then
+        if [ "$PASSED" -eq "$TOTAL" ] && [ "$TOTAL" -gt 0 ]; then
           echo "🎉 CONGRATULATIONS! All exercises complete!"
         else
           echo "💪 Keep going! Complete the exercises marked with ⬜"
