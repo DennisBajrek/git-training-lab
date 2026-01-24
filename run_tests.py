@@ -6,22 +6,23 @@ Usage: python run_tests.py
 import subprocess
 import sys
 
+
 def run_tests():
     print("\n🧪 Running tests...\n")
-    
-    # Run pytest and capture output
+
+    # Run pytest quietly and capture output
     result = subprocess.run(
-        [sys.executable, "-m", "pytest", "tests/", "-v", "--tb=line"],
+        [sys.executable, "-m", "pytest", "tests/", "-v", "--tb=no"],
         capture_output=True,
-        text=True
+        text=True,
     )
-    
-    output = result.stdout + result.stderr
-    
+
+    output = result.stdout
+
     # Count results per exercise
     exercises = {
         "Exercise 1 (Reverse String)": "TestExercise1",
-        "Exercise 2 (FizzBuzz)": "TestExercise2", 
+        "Exercise 2 (FizzBuzz)": "TestExercise2",
         "Exercise 3 (Find Max)": "TestExercise3",
         "Exercise 4 (Count Vowels)": "TestExercise4",
         "Exercise 5 (Palindrome)": "TestExercise5",
@@ -30,49 +31,49 @@ def run_tests():
         "Exercise 8 (Group Anagrams)": "TestExercise8",
         "Exercise 9 (Valid Parentheses)": "TestExercise9",
     }
-    
+
     total_passed = 0
     total_tests = 0
-    
+
     print("╔═══════════════════════════════════════════════════════════════╗")
     print("║           🎓 GIT TRAINING LAB - PROGRESS REPORT 🎓            ║")
     print("╚═══════════════════════════════════════════════════════════════╝")
     print()
-    
+
     results = []
-    
+
     for label, test_class in exercises.items():
-        passed = output.count(f"{test_class}::") - output.count(f"{test_class}::") + output.count(f"{test_class}::test") 
-        # More reliable counting
         lines = output.split("\n")
         passed = sum(1 for line in lines if test_class in line and "PASSED" in line)
-        total = sum(1 for line in lines if test_class in line and ("::" in line) and ("PASSED" in line or "FAILED" in line))
-        
+        failed = sum(1 for line in lines if test_class in line and "FAILED" in line)
+        total = passed + failed
+
         total_passed += passed
         total_tests += total
-        
+
         if passed == total and total > 0:
             results.append(f"✅ {label:<35} - COMPLETE ({passed}/{total})")
         else:
             results.append(f"⬜ {label:<35} - {passed}/{total} passing")
-    
+
     print(f"📊 Overall: {total_passed} / {total_tests} tests passing")
     print()
-    
+
     for r in results:
         print(r)
-    
+
     print()
     print("─────────────────────────────────────────────────────────────────")
-    
+
     if total_passed == total_tests and total_tests > 0:
         print("🎉 CONGRATULATIONS! All exercises complete!")
     else:
         print("💪 Keep going! Complete the exercises marked with ⬜")
         print()
         print("Tip: Run 'python run_tests.py' anytime to check progress!")
-    
+
     print()
+
 
 if __name__ == "__main__":
     run_tests()
