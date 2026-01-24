@@ -19,6 +19,7 @@ INSTRUCTIONS:
 
 
 def reverse_string(s: str) -> str:
+    return s[::-1]
     """
     Reverse the input string.
 
@@ -34,11 +35,9 @@ def reverse_string(s: str) -> str:
     Returns:
         The reversed string
     """
-
     # TODO: Implement this function
     # Hint: Python has a simple way to reverse strings using slicing
-    def reverse_string(s: str) -> str:
-        return s[::-1]
+    pass
 
 
 # Don't modify below this line - used for local testing
