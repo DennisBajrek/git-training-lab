@@ -19,22 +19,42 @@ By the end of this lab, you will:
 
 ---
 
+## 🚀 Quick Start (Do This First)
+
+1. **Fork this repo** — Click the "Fork" button on GitHub (top right)
+2. **Clone your fork:**
+   ```bash
+   git clone https://github.com/YOUR-USERNAME/git-training-lab.git
+   cd git-training-lab
+   ```
+3. **Set up Git** (if you haven't):
+   ```bash
+   git config --global user.name "Your Name"
+   git config --global user.email "your.email@example.com"
+   ```
+4. **Install pytest:**
+   ```bash
+   pip install pytest
+   ```
+5. **Verify setup:**
+   ```bash
+   python run_tests.py
+   ```
+   You should see all exercises at 0/X — that's expected!
+6. **Start with Exercise 1** in `exercises/solo/exercise_1.py`
+
+---
+
 ## 📚 Before You Start
 
-> **💡 New to Markdown files?** If these `.md` files look like messy plain text, see [How to View Markdown](docs/VIEWING_MARKDOWN.md) for setup instructions. Or just **read them on GitHub** where they render automatically!
+> **💡 New to Markdown files?** If these `.md` files look like messy plain text, see [How to View Markdown](docs/VIEWING_MARKDOWN.md) or just **read them on GitHub** where they render automatically!
 
-**⚙️ First-time setup (do this first!):**
-- [Authentication Setup](docs/AUTH_SETUP.md) — SSH keys or HTTPS tokens for GitHub
-- [Git Config Setup](docs/GITCONFIG_SETUP.md) — Set your name, email, and useful defaults
+**📖 Recommended reading order:**
+1. [Setup Guide](docs/SETUP.md) — Git installation, authentication, configuration
+2. [Git Guide](docs/GIT_GUIDE.md) — How Git works + fixing common mistakes
+3. [Workflow Guide](docs/WORKFLOW.md) — Jira, Slack, and code review practices
 
-**📖 Read these before starting:**
-- [Git Concepts Guide](docs/CONCEPTS.md) — How Git works under the hood
-- [Understanding .gitignore](docs/GITIGNORE.md) — What NOT to commit
-- [Jira & Slack Workflow](docs/JIRA_SLACK_WORKFLOW.md) — How these tools fit into your daily work
-
-**🚑 Keep these handy:**
-- [Git First Aid](docs/GIT_FIRST_AID.md) — Fixing common mistakes
-- [PR Review Etiquette](docs/PR_REVIEW_ETIQUETTE.md) — How to give and receive code review
+**🆘 Having issues?** Check the [Troubleshooting](docs/SETUP.md#troubleshooting) section.
 
 ### Prerequisites
 
@@ -175,16 +195,6 @@ git diff --staged
 
 ## 📖 Additional Resources
 
-**In this repo:**
-- [Authentication Setup](docs/AUTH_SETUP.md) — SSH keys or HTTPS tokens
-- [Git Config Setup](docs/GITCONFIG_SETUP.md) — Configure Git properly
-- [Understanding .gitignore](docs/GITIGNORE.md) — What NOT to commit
-- [Git Concepts](docs/CONCEPTS.md) — How Git works
-- [Git First Aid](docs/GIT_FIRST_AID.md) — Fixing mistakes
-- [PR Review Etiquette](docs/PR_REVIEW_ETIQUETTE.md) — Code review best practices
-- [Jira & Slack Workflow](docs/JIRA_SLACK_WORKFLOW.md) — Daily tools
-
-**External:**
 - [Pro Git Book (free)](https://git-scm.com/book/en/v2)
 - [GitHub Git Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
 - [Oh Shit, Git!?!](https://ohshitgit.com/) — Fixing common mistakes
