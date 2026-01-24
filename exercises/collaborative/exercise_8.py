@@ -1,11 +1,24 @@
 """
-TEAMMATE'S VERSION - Exercise 8
-================================
+Exercise 8: Merge Conflicts - Working with a Team
+==================================================
 
-This file represents a teammate's implementation that will create
-a merge conflict with your implementation.
+GIT LEARNING GOALS:
+- Understanding merge conflicts
+- Resolving conflicts manually
+- git merge --abort (cancel a merge)
+- Best practices for conflict resolution
 
-This is used for the merge conflict exercise.
+CODING TASK: Group Anagrams
+Difficulty: ⭐⭐ Medium
+
+INSTRUCTIONS:
+This is a COLLABORATIVE exercise. You'll work with a simulated 
+"teammate" whose changes conflict with yours.
+
+1. Create your solution on a branch
+2. Try to merge with your teammate's branch
+3. Resolve the conflict
+4. Complete the merge
 """
 
 
@@ -13,30 +26,48 @@ def group_anagrams(words: list) -> list:
     """
     Group anagrams together.
     
-    TEAMMATE'S APPROACH: Using Counter for comparison
-    """
-    from collections import Counter
+    Two strings are anagrams if they contain the same characters
+    with the same frequencies, just rearranged.
     
-    # Teammate's different approach using Counter
-    anagram_groups = {}
-    
-    for word in words:
-        # Using frozenset of Counter items as key
-        # This is different from sorting!
-        key = frozenset(Counter(word).items())
+    Examples:
+        group_anagrams(["eat", "tea", "tan", "ate", "nat", "bat"])
+        → [["eat", "tea", "ate"], ["tan", "nat"], ["bat"]]
         
-        if key not in anagram_groups:
-            anagram_groups[key] = []
-        anagram_groups[key].append(word)
+        group_anagrams([""])
+        → [[""]]
+        
+        group_anagrams(["a"])
+        → [["a"]]
     
-    return list(anagram_groups.values())
+    Note: The order of groups and order within groups doesn't matter
+    for the tests.
+    
+    Args:
+        words: List of strings
+        
+    Returns:
+        List of lists, where each inner list contains anagrams
+    """
+    # TODO: Implement this function
+    #
+    # Hint: Use a dictionary where the key is the sorted characters
+    # of each word. All anagrams will have the same sorted characters.
+    #
+    # Example:
+    #   "eat" sorted → "aet"
+    #   "tea" sorted → "aet"
+    #   "ate" sorted → "aet"
+    #   They all map to the same key!
+    pass
 
 
-# Don't modify below this line - used for local testing
+# Don't modify below this line
 if __name__ == "__main__":
     def compare_anagram_groups(result, expected):
+        """Compare anagram groups regardless of order."""
         if result is None:
             return False
+        # Convert to sets of frozensets for comparison
         result_normalized = {frozenset(group) for group in result}
         expected_normalized = {frozenset(group) for group in expected}
         return result_normalized == expected_normalized
@@ -48,10 +79,147 @@ if __name__ == "__main__":
         ),
         ([""], [[""]]),
         (["a"], [["a"]]),
+        (["abc", "bca", "cab", "xyz", "zyx"], [["abc", "bca", "cab"], ["xyz", "zyx"]]),
     ]
     
-    print("Testing teammate's group_anagrams...")
+    print("Testing group_anagrams...")
     for words, expected in test_cases:
         result = group_anagrams(words)
         status = "✅" if compare_anagram_groups(result, expected) else "❌"
         print(f"  {status} group_anagrams({words})")
+        if result:
+            print(f"      Got: {result}")
+
+
+"""
+=============================================================================
+GIT EXERCISE - Resolving Merge Conflicts
+=============================================================================
+
+SCENARIO:
+You and a teammate are both implementing group_anagrams. You both started
+from the same point but took different approaches. When you try to merge,
+Git can't automatically combine your changes - you have a CONFLICT!
+
+This repo includes a branch called "teammate/exercise-8" with a different
+implementation. You'll merge it with yours and resolve the conflict.
+
+=============================================================================
+STEP 1: Create your branch
+=============================================================================
+
+    $ git checkout main
+    $ git checkout -b my-exercise-8
+
+=============================================================================
+STEP 2: Implement your solution
+=============================================================================
+
+    → Write your implementation of group_anagrams
+    → Use the hint about sorting characters as keys
+
+    $ git add exercises/collaborative/exercise_8.py
+    $ git commit -m "My implementation of group_anagrams"
+
+=============================================================================
+STEP 3: Try to merge your teammate's branch
+=============================================================================
+
+    $ git merge teammate/exercise-8
+
+    → You'll see something like:
+      CONFLICT (content): Merge conflict in exercises/collaborative/exercise_8.py
+      Automatic merge failed; fix conflicts and then commit the result.
+
+=============================================================================
+STEP 4: Examine the conflict
+=============================================================================
+
+    $ git status
+    
+    → Shows the file as "both modified"
+
+    Open exercises/collaborative/exercise_8.py in your editor.
+    You'll see conflict markers:
+
+    <<<<<<< HEAD
+    # Your code is here
+    =======
+    # Teammate's code is here
+    >>>>>>> teammate/exercise-8
+
+=============================================================================
+STEP 5: Resolve the conflict
+=============================================================================
+
+    To resolve the conflict, you need to:
+    
+    1. Decide which code to keep (yours, theirs, or a combination)
+    2. Remove the conflict markers (<<<<<<, ======, >>>>>>)
+    3. Make sure the final code is correct
+
+    For this exercise, examine both solutions:
+    - If your teammate's solution is better, use theirs
+    - If yours is better, use yours
+    - You can also combine the best parts of both!
+
+    After editing, the file should have NO conflict markers.
+
+=============================================================================
+STEP 6: Complete the merge
+=============================================================================
+
+    $ git add exercises/collaborative/exercise_8.py
+    $ git commit -m "Merge teammate's branch, resolve conflict in group_anagrams"
+
+    → Git recognizes this as a merge commit
+
+=============================================================================
+STEP 7: Verify the merge
+=============================================================================
+
+    $ git log --oneline --graph -10
+
+    → You should see both branches coming together
+
+=============================================================================
+STEP 8: Test your resolution
+=============================================================================
+
+    $ python exercises/collaborative/exercise_8.py
+
+    → Make sure tests pass!
+
+=============================================================================
+STEP 9: Merge to main and push
+=============================================================================
+
+    $ git checkout main
+    $ git merge my-exercise-8
+    $ git push origin main
+
+=============================================================================
+
+BONUS: If you want to abort a merge
+
+If you're in the middle of a conflict and want to start over:
+
+    $ git merge --abort
+
+This cancels the merge and returns to the state before you tried to merge.
+
+=============================================================================
+
+CONFLICT PREVENTION TIPS:
+- Pull frequently to stay up to date
+- Communicate with teammates about who's working on what
+- Make smaller, focused commits
+- Review diffs before committing
+
+=============================================================================
+REFLECTION QUESTIONS:
+- What causes a merge conflict?
+- How can you prevent conflicts in a team?
+- When might you use git merge --abort?
+=============================================================================
+"""
