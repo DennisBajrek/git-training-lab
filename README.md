@@ -145,7 +145,7 @@ Every time you push, GitHub Actions automatically runs tests:
 You can also run tests locally:
 ```bash
 pip install pytest
-pytest tests/ -v
+python run_tests.py
 ```
 
 ---
