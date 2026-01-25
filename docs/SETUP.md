@@ -259,4 +259,33 @@ ssh -T git@github.com
 
 ---
 
+---
+
+## Viewing Markdown Files
+
+The documentation uses **Markdown** (`.md` files). Here's how to view them:
+
+### On GitHub (Easiest)
+GitHub automatically renders Markdown beautifully. Just click any `.md` file.
+
+### In VS Code
+- **Preview:** `Cmd/Ctrl + Shift + V`
+- **Side-by-side:** `Cmd/Ctrl + K V`
+
+### In JetBrains IDEs (PyCharm, IntelliJ)
+Look for split-view icons in the top-right of the editor.
+
+### In Terminal
+Install `glow` for rendered Markdown:
+```bash
+brew install glow  # Mac
+sudo apt install glow  # Ubuntu
+glow README.md
+```
+
+### Can't Render?
+The docs are written to be readable as plain text too. `#` = heading, `**text**` = bold, `-` = bullet.
+
+---
+
 *Next: Read the [Git Guide](GIT_GUIDE.md) to understand how Git works.*

@@ -47,12 +47,16 @@ By the end of this lab, you will:
 
 ## 📚 Before You Start
 
-> **💡 New to Markdown files?** If these `.md` files look like messy plain text, see [How to View Markdown](docs/VIEWING_MARKDOWN.md) or just **read them on GitHub** where they render automatically!
+> **💡 New to Markdown files?** If these `.md` files look like messy plain text, see the [Viewing Markdown section in Setup](docs/SETUP.md#viewing-markdown-files) or just **read them on GitHub** where they render automatically!
 
 **📖 Recommended reading order:**
 1. [Setup Guide](docs/SETUP.md) — Git installation, authentication, configuration
 2. [Git Guide](docs/GIT_GUIDE.md) — How Git works + fixing common mistakes
 3. [Workflow Guide](docs/WORKFLOW.md) — Jira, Slack, and code review practices
+
+**📋 Quick References:**
+- [Git Cheat Sheet](docs/GIT_CHEATSHEET.md) — One-page command reference
+- [Common Mistakes](docs/COMMON_MISTAKES.md) — How to fix Git mistakes
 
 **🆘 Having issues?** Check the [Troubleshooting](docs/SETUP.md#troubleshooting) section.
 
@@ -93,7 +97,7 @@ git-training-lab/
 
 ---
 
-## 📝 Part 1: Solo Exercises (70%)
+## 📝 Part 1: Solo Exercises (Fundamentals 1-7)
 
 Complete these individually. Each exercise has a Python file with TODOs and a corresponding Git task.
 
@@ -107,6 +111,19 @@ Complete these individually. Each exercise has a Python file with TODOs and a co
 | 6 | `reset`, `revert` | Two Sum | ⭐⭐ Medium |
 | 7 | `checkout` (files), `restore` | Merge sorted arrays | ⭐⭐ Medium |
 
+## 📝 Part 2: Advanced Solo Exercises (10-15)
+
+These exercises cover advanced Git concepts that are essential in real-world workflows.
+
+| Exercise | Git Focus | Coding Task | Difficulty |
+|----------|-----------|-------------|------------|
+| 10 | `cherry-pick` | Binary Search | ⭐⭐ Medium |
+| 11 | `bisect` | Email Validation | ⭐⭐ Medium |
+| 12 | `reflog` (recovery) | Flatten Nested List | ⭐⭐ Medium |
+| 13 | `commit --amend`, `rebase -i` (squash) | Remove Duplicates | ⭐⭐ Medium |
+| 14 | `blame`, `log -p` | Word Frequency | ⭐⭐ Medium |
+| 15 | `tag` | Version Parser | ⭐⭐ Medium |
+
 ### How to Complete Solo Exercises
 
 1. Navigate to the exercise file (e.g., `exercises/solo/exercise_1.py`)
@@ -118,7 +135,7 @@ Complete these individually. Each exercise has a Python file with TODOs and a co
 
 ---
 
-## 👥 Part 2: Collaborative Exercises (30%)
+## 👥 Part 3: Collaborative Exercises (8-9)
 
 Complete these with a partner or simulate teamwork using the pre-made branches.
 
@@ -179,6 +196,7 @@ git diff --staged
 
 ## 🏁 Completion Checklist
 
+### Fundamentals (1-7)
 - [ ] Exercise 1: First commit and push
 - [ ] Exercise 2: Explored history
 - [ ] Exercise 3: Branching basics
@@ -186,10 +204,20 @@ git diff --staged
 - [ ] Exercise 5: Used stash
 - [ ] Exercise 6: Reset and revert
 - [ ] Exercise 7: Restored files
+
+### Collaborative (8-9)
 - [ ] Exercise 8: Resolved merge conflict
 - [ ] Exercise 9: Rebased and created PR
 
-**All tests passing? Congratulations! 🎉** You now have the Git fundamentals to work in any development team.
+### Advanced (10-15)
+- [ ] Exercise 10: Cherry-picked commits
+- [ ] Exercise 11: Used bisect to find bugs
+- [ ] Exercise 12: Recovered with reflog
+- [ ] Exercise 13: Amended and squashed commits
+- [ ] Exercise 14: Investigated with blame/log
+- [ ] Exercise 15: Created tags for releases
+
+**All tests passing? Congratulations!** You now have comprehensive Git skills for any development team.
 
 ---
 
