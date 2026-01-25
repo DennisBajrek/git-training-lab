@@ -10,9 +10,9 @@ import sys
 def run_tests():
     print("\n🧪 Running tests...\n")
 
-    # Run pytest quietly and capture output
+    # Run pytest quietly and capture output (only test_exercises.py for progress report)
     result = subprocess.run(
-        [sys.executable, "-m", "pytest", "tests/", "-v", "--tb=no"],
+        [sys.executable, "-m", "pytest", "tests/test_exercises.py", "-v", "--tb=no"],
         capture_output=True,
         text=True,
     )
