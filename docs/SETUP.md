@@ -4,6 +4,45 @@ Everything you need to get Git working on your machine.
 
 ---
 
+## 0. Before You Begin (Terminal Basics)
+
+All Git commands are typed in a **terminal** (also called command line, console, or shell).
+
+### Opening the Terminal
+
+| Operating System | How to Open |
+|-----------------|-------------|
+| **Windows** | Search for "Git Bash" (installed with Git) or "Command Prompt" |
+| **Mac** | Press `Cmd + Space`, type "Terminal", press Enter |
+| **Linux** | Press `Ctrl + Alt + T` or search for "Terminal" |
+
+### Understanding Terminal Commands
+
+```bash
+$ git status
+```
+
+- The `$` symbol indicates "type this command" — **don't type the `$` itself**
+- Just type `git status` and press Enter
+
+### Essential Terminal Navigation
+
+```bash
+pwd                    # Print current directory (where am I?)
+ls                     # List files in current directory
+cd folder-name         # Change into a folder
+cd ..                  # Go up one folder
+cd ~                   # Go to home directory
+```
+
+### Common Issues
+
+**"command not found"** — The program isn't installed or isn't in your PATH
+**"permission denied"** — Try adding `sudo` before the command (Mac/Linux)
+**"not a git repository"** — You're not inside a Git project folder, use `cd` to navigate
+
+---
+
 ## 1. Install Git
 
 **Windows:**

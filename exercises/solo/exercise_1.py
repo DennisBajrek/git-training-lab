@@ -99,6 +99,35 @@ STEP 7: Check GitHub Actions
     → Watch your tests run!
 
 =============================================================================
+TROUBLESHOOTING - Common Issues
+=============================================================================
+
+ERROR: "fatal: not a git repository"
+    → You're not in the project folder
+    → Run: cd git-training-lab
+
+ERROR: "error: failed to push some refs"
+    → Someone else pushed changes (or you're pushing to wrong repo)
+    → Run: git pull origin main
+    → Then try: git push origin main
+
+ERROR: "Permission denied" or "Authentication failed"
+    → Your GitHub credentials aren't set up
+    → See docs/SETUP.md for authentication setup
+
+ERROR: "nothing to commit, working tree clean"
+    → You haven't made any changes, or already committed
+    → Check: git status
+    → Check: git log --oneline -3
+
+STUCK? Start fresh:
+    → git status           # See what's happening
+    → git log --oneline    # See your commits
+    → git diff             # See your changes
+
+Still stuck? Check docs/COMMON_MISTAKES.md or ask for help!
+
+=============================================================================
 REFLECTION QUESTIONS (think about these):
 - What's the difference between git add and git commit?
 - Why do we write descriptive commit messages?
