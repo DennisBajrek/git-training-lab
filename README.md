@@ -19,9 +19,34 @@ By the end of this lab, you will:
 
 ---
 
+## 📖 Key Terms (Glossary)
+
+New to Git? Here's what the jargon means:
+
+| Term | What It Means |
+|------|---------------|
+| **Git** | Software that tracks changes to your code over time |
+| **GitHub** | A website that hosts Git repositories online |
+| **Repository (repo)** | A folder containing your project + its entire history |
+| **Fork** | Your personal copy of someone else's repo on GitHub |
+| **Clone** | Download a repo from GitHub to your computer |
+| **Commit** | A saved snapshot of your changes (like a save point) |
+| **Branch** | A parallel version of your code for working on features |
+| **Main** | The primary branch (the "official" version) |
+| **Origin** | The default name for the remote server (GitHub) |
+| **Push** | Upload your commits to GitHub |
+| **Pull** | Download changes from GitHub to your computer |
+| **Merge** | Combine changes from one branch into another |
+
+---
+
 ## 🚀 Quick Start (Do This First)
 
+> **💡 New to the terminal?** The terminal (also called command line) is where you type commands. On Mac: open "Terminal". On Windows: open "Git Bash" (installed with Git) or "Command Prompt". The `$` symbol means "type this command" — don't type the `$` itself!
+
 1. **Fork this repo** — Click the "Fork" button on GitHub (top right)
+   - This creates YOUR personal copy on GitHub
+   - You'll push your work here, not the original repo
 2. **Clone your fork:**
    ```bash
    git clone https://github.com/YOUR-USERNAME/git-training-lab.git
@@ -65,15 +90,16 @@ By the end of this lab, you will:
 
 - Python 3.8+ installed
 - Git installed (`git --version` to check)
+- pytest installed (`pip install pytest`)
 - A GitHub account
 - A code editor (VS Code recommended)
 
 ### Setup
 
 1. **Fork this repository** (click "Fork" button on GitHub)
-2. **Clone your fork:**
+2. **Clone your fork** (replace YOUR-USERNAME with your GitHub username):
    ```bash
-   git clone https://github.com/RubyHawk/git-training-lab.git
+   git clone https://github.com/YOUR-USERNAME/git-training-lab.git
    cd git-training-lab
    ```
 3. **Verify setup:**
@@ -170,7 +196,7 @@ python run_tests.py
 
 ## 🆘 Getting Help
 
-- **Stuck on Git?** Check the [Git Concepts Guide](docs/CONCEPTS.md)
+- **Stuck on Git?** Check the [Git Guide](docs/GIT_GUIDE.md) or [Common Mistakes](docs/COMMON_MISTAKES.md)
 - **Stuck on code?** The coding is intentionally simple—focus on Git
 - **Something broken?** Check GitHub Actions output for hints
 - **Still stuck?** Ask a teammate or mentor

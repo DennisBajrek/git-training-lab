@@ -212,7 +212,7 @@ MERGE vs REBASE:
 
 MERGE creates a merge commit:
     A - B - C - - - F (main)
-         \       /
+         \\       /
           D - E - (feature)
 
 REBASE replays commits:
