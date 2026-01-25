@@ -25,40 +25,42 @@ This is a COLLABORATIVE exercise. You'll work with a simulated
 def group_anagrams(words: list) -> list:
     """
     Group anagrams together.
-    
+
     Two strings are anagrams if they contain the same characters
     with the same frequencies, just rearranged.
-    
+
     Examples:
         group_anagrams(["eat", "tea", "tan", "ate", "nat", "bat"])
         → [["eat", "tea", "ate"], ["tan", "nat"], ["bat"]]
-        
+
         group_anagrams([""])
         → [[""]]
-        
+
         group_anagrams(["a"])
         → [["a"]]
-    
+
     Note: The order of groups and order within groups doesn't matter
     for the tests.
-    
+
     Args:
         words: List of strings
-        
+
     Returns:
         List of lists, where each inner list contains anagrams
     """
-    # TODO: Implement this function
-    #
-    # Hint: Use a dictionary where the key is the sorted characters
-    # of each word. All anagrams will have the same sorted characters.
-    #
-    # Example:
-    #   "eat" sorted → "aet"
-    #   "tea" sorted → "aet"
-    #   "ate" sorted → "aet"
-    #   They all map to the same key!
-    pass
+    # TEAMMATE'S IMPLEMENTATION
+    # Using Counter to create character frequency signature
+    from collections import Counter
+
+    anagram_map = {}
+    for word in words:
+        # Create a signature from character counts
+        signature = tuple(sorted(Counter(word).items()))
+        if signature not in anagram_map:
+            anagram_map[signature] = []
+        anagram_map[signature].append(word)
+
+    return list(anagram_map.values())
 
 
 # Don't modify below this line
