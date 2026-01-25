@@ -134,29 +134,36 @@ PART B: Rebase onto Updated Main
 
 SCENARIO: While you were working, main was updated. Let's simulate this.
 
-STEP 6: Simulate main being updated
-    $ git checkout main
-    $ git merge main-updated
-    
-    → Now main has commits your feature branch doesn't have
+STEP 6: First, fetch the main-updated branch from GitHub
+    $ git fetch origin main-updated
 
-STEP 7: Go back to your feature branch
+    → This downloads the "main-updated" branch that simulates updates
+    → Without this step, Git won't know about main-updated!
+
+STEP 7: Simulate main being updated
+    $ git checkout main
+    $ git merge origin/main-updated
+
+    → Now main has commits your feature branch doesn't have
+    → We use "origin/main-updated" because it's a remote-tracking branch
+
+STEP 8: Go back to your feature branch
     $ git checkout feature/valid-parentheses
 
-STEP 8: See the divergence
+STEP 9: See the divergence
     $ git log --oneline --graph --all
-    
+
     → Your branch and main have diverged
 
-STEP 9: Rebase your branch onto main
+STEP 10: Rebase your branch onto main
     $ git rebase main
-    
+
     → This "replays" your commits on top of main's new commits
     → If there are conflicts, resolve them like in Exercise 8
 
-STEP 10: View the result
+STEP 11: View the result
     $ git log --oneline --graph --all
-    
+
     → Your commits are now on TOP of main's commits
     → History is linear and clean!
 
@@ -164,45 +171,45 @@ STEP 10: View the result
 PART C: Create a Pull Request
 =============================================================================
 
-STEP 11: Push your feature branch to GitHub
+STEP 12: Push your feature branch to GitHub
     $ git push origin feature/valid-parentheses
 
-STEP 12: Go to GitHub in your browser
+STEP 13: Go to GitHub in your browser
     → Navigate to your forked repository
     → You should see a banner: "feature/valid-parentheses had recent pushes"
     → Click "Compare & pull request"
 
-STEP 13: Fill out the Pull Request
+STEP 14: Fill out the Pull Request
     Title: "Exercise 9: Implement valid parentheses checker"
-    
+
     Description (example):
     ```
     ## Summary
     Implements the valid parentheses checker using a stack-based approach.
-    
+
     ## Approach
     - Use a stack to track opening brackets
     - Match closing brackets with the top of the stack
     - Return true if stack is empty at the end
-    
+
     ## Testing
     - All test cases pass locally
     ```
 
-STEP 14: Review the diff
+STEP 15: Review the diff
     → GitHub shows what changed
     → In a real team, a teammate would review this
 
-STEP 15: Merge the Pull Request
+STEP 16: Merge the Pull Request
     → Click "Merge pull request"
     → Choose "Squash and merge" or "Rebase and merge" for clean history
     → Click "Confirm merge"
 
-STEP 16: Update your local main
+STEP 17: Update your local main
     $ git checkout main
     $ git pull origin main
 
-STEP 17: Clean up
+STEP 18: Clean up
     $ git branch -d feature/valid-parentheses
     $ git push origin --delete feature/valid-parentheses  # delete remote branch
 
