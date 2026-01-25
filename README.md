@@ -170,7 +170,7 @@ python run_tests.py
 
 ## 🆘 Getting Help
 
-- **Stuck on Git?** Check the [Git Concepts Guide](docs/CONCEPTS.md)
+- **Stuck on Git?** Check the [Git Guide](docs/GIT_GUIDE.md) or [Common Mistakes](docs/COMMON_MISTAKES.md)
 - **Stuck on code?** The coding is intentionally simple—focus on Git
 - **Something broken?** Check GitHub Actions output for hints
 - **Still stuck?** Ask a teammate or mentor

@@ -19,23 +19,29 @@ def run_tests():
 
     output = result.stdout
 
-    # Count results per exercise
-    exercises = {
-        "Exercise 1 (Reverse String)": "TestExercise1",
-        "Exercise 2 (FizzBuzz)": "TestExercise2",
-        "Exercise 3 (Find Max)": "TestExercise3",
-        "Exercise 4 (Count Vowels)": "TestExercise4",
-        "Exercise 5 (Palindrome)": "TestExercise5",
-        "Exercise 6 (Two Sum)": "TestExercise6",
-        "Exercise 7 (Merge Arrays)": "TestExercise7",
-        "Exercise 8 (Group Anagrams)": "TestExercise8",
-        "Exercise 9 (Valid Parentheses)": "TestExercise9",
-        "Exercise 10 (Binary Search)": "TestExercise10",
-        "Exercise 11 (Email Validation)": "TestExercise11",
-        "Exercise 12 (Flatten List)": "TestExercise12",
-        "Exercise 13 (Remove Duplicates)": "TestExercise13",
-        "Exercise 14 (Word Frequency)": "TestExercise14",
-        "Exercise 15 (Version Parser)": "TestExercise15",
+    # Count results per exercise, organized by section
+    sections = {
+        "Fundamentals:": {
+            "Exercise 1 (Reverse String)": "TestExercise1",
+            "Exercise 2 (FizzBuzz)": "TestExercise2",
+            "Exercise 3 (Find Max)": "TestExercise3",
+            "Exercise 4 (Count Vowels)": "TestExercise4",
+            "Exercise 5 (Palindrome)": "TestExercise5",
+            "Exercise 6 (Two Sum)": "TestExercise6",
+            "Exercise 7 (Merge Arrays)": "TestExercise7",
+        },
+        "Collaborative:": {
+            "Exercise 8 (Group Anagrams)": "TestExercise8",
+            "Exercise 9 (Valid Parentheses)": "TestExercise9",
+        },
+        "Advanced:": {
+            "Exercise 10 (Binary Search)": "TestExercise10",
+            "Exercise 11 (Email Validation)": "TestExercise11",
+            "Exercise 12 (Flatten List)": "TestExercise12",
+            "Exercise 13 (Remove Duplicates)": "TestExercise13",
+            "Exercise 14 (Word Frequency)": "TestExercise14",
+            "Exercise 15 (Version Parser)": "TestExercise15",
+        },
     }
 
     total_passed = 0
@@ -48,19 +54,22 @@ def run_tests():
 
     results = []
 
-    for label, test_class in exercises.items():
-        lines = output.split("\n")
-        passed = sum(1 for line in lines if test_class in line and "PASSED" in line)
-        failed = sum(1 for line in lines if test_class in line and "FAILED" in line)
-        total = passed + failed
+    for section_name, exercises in sections.items():
+        results.append(section_name)
+        for label, test_class in exercises.items():
+            lines = output.split("\n")
+            passed = sum(1 for line in lines if test_class in line and "PASSED" in line)
+            failed = sum(1 for line in lines if test_class in line and "FAILED" in line)
+            total = passed + failed
 
-        total_passed += passed
-        total_tests += total
+            total_passed += passed
+            total_tests += total
 
-        if passed == total and total > 0:
-            results.append(f"✅ {label:<35} - COMPLETE ({passed}/{total})")
-        else:
-            results.append(f"⬜ {label:<35} - {passed}/{total} passing")
+            if passed == total and total > 0:
+                results.append(f"✅ {label:<35} - COMPLETE ({passed}/{total})")
+            else:
+                results.append(f"⬜ {label:<35} - {passed}/{total} passing")
+        results.append("")  # Empty line after section
 
     print(f"📊 Overall: {total_passed} / {total_tests} tests passing")
     print()
@@ -68,7 +77,6 @@ def run_tests():
     for r in results:
         print(r)
 
-    print()
     print("─────────────────────────────────────────────────────────────────")
 
     if total_passed == total_tests and total_tests > 0:
