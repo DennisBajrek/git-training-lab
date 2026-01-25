@@ -30,6 +30,12 @@ def run_tests():
         "Exercise 7 (Merge Arrays)": "TestExercise7",
         "Exercise 8 (Group Anagrams)": "TestExercise8",
         "Exercise 9 (Valid Parentheses)": "TestExercise9",
+        "Exercise 10 (Binary Search)": "TestExercise10",
+        "Exercise 11 (Email Validation)": "TestExercise11",
+        "Exercise 12 (Flatten List)": "TestExercise12",
+        "Exercise 13 (Remove Duplicates)": "TestExercise13",
+        "Exercise 14 (Word Frequency)": "TestExercise14",
+        "Exercise 15 (Version Parser)": "TestExercise15",
     }
 
     total_passed = 0
