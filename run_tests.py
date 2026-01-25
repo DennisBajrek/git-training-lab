@@ -47,11 +47,6 @@ def run_tests():
     total_passed = 0
     total_tests = 0
 
-    print("╔═══════════════════════════════════════════════════════════════╗")
-    print("║           🎓 GIT TRAINING LAB - PROGRESS REPORT 🎓            ║")
-    print("╚═══════════════════════════════════════════════════════════════╝")
-    print()
-
     results = []
 
     for section_name, exercises in sections.items():
@@ -61,8 +56,16 @@ def run_tests():
             # Use "::" suffix to avoid matching TestExercise1 with TestExercise10, etc.
             # Check for "%" to only count main test output, not summary section
             class_pattern = f"{test_class}::"
-            passed = sum(1 for line in lines if class_pattern in line and " PASSED" in line and "%" in line)
-            failed = sum(1 for line in lines if class_pattern in line and " FAILED" in line and "%" in line)
+            passed = sum(
+                1
+                for line in lines
+                if class_pattern in line and " PASSED" in line and "%" in line
+            )
+            failed = sum(
+                1
+                for line in lines
+                if class_pattern in line and " FAILED" in line and "%" in line
+            )
             total = passed + failed
 
             total_passed += passed
@@ -86,8 +89,6 @@ def run_tests():
         print("🎉 CONGRATULATIONS! All exercises complete!")
     else:
         print("💪 Keep going! Complete the exercises marked with ⬜")
-        print()
-        print("Tip: Run 'python run_tests.py' anytime to check progress!")
 
     print()
 
