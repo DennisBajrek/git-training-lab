@@ -244,4 +244,10 @@ git diff --staged
 
 ---
 
+## 👥 Contributors
+
+Thanks to everyone who contributed to this training lab!
+
+---
+
 *Created for new engineer onboarding. Happy learning!*
