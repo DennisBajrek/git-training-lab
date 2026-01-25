@@ -60,6 +60,7 @@ jobs:
           fi
         }
         
+        echo "Fundamentals:"
         check_exercise "Exercise1" "Exercise 1 (Reverse String)"
         check_exercise "Exercise2" "Exercise 2 (FizzBuzz)"
         check_exercise "Exercise3" "Exercise 3 (Find Max)"
@@ -67,9 +68,19 @@ jobs:
         check_exercise "Exercise5" "Exercise 5 (Palindrome)"
         check_exercise "Exercise6" "Exercise 6 (Two Sum)"
         check_exercise "Exercise7" "Exercise 7 (Merge Arrays)"
+        echo ""
+        echo "Collaborative:"
         check_exercise "Exercise8" "Exercise 8 (Group Anagrams)"
         check_exercise "Exercise9" "Exercise 9 (Valid Parentheses)"
-        
+        echo ""
+        echo "Advanced:"
+        check_exercise "Exercise10" "Exercise 10 (Binary Search)"
+        check_exercise "Exercise11" "Exercise 11 (Email Validation)"
+        check_exercise "Exercise12" "Exercise 12 (Flatten List)"
+        check_exercise "Exercise13" "Exercise 13 (Remove Duplicates)"
+        check_exercise "Exercise14" "Exercise 14 (Word Frequency)"
+        check_exercise "Exercise15" "Exercise 15 (Version Parser)"
+
         echo ""
         echo "─────────────────────────────────────────────────────────────────"
         
