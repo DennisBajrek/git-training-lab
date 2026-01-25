@@ -58,8 +58,11 @@ def run_tests():
         results.append(section_name)
         for label, test_class in exercises.items():
             lines = output.split("\n")
-            passed = sum(1 for line in lines if test_class in line and "PASSED" in line)
-            failed = sum(1 for line in lines if test_class in line and "FAILED" in line)
+            # Use "::" suffix to avoid matching TestExercise1 with TestExercise10, etc.
+            # Check for "%" to only count main test output, not summary section
+            class_pattern = f"{test_class}::"
+            passed = sum(1 for line in lines if class_pattern in line and " PASSED" in line and "%" in line)
+            failed = sum(1 for line in lines if class_pattern in line and " FAILED" in line and "%" in line)
             total = passed + failed
 
             total_passed += passed

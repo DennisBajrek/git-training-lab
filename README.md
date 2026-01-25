@@ -90,6 +90,7 @@ New to Git? Here's what the jargon means:
 
 - Python 3.8+ installed
 - Git installed (`git --version` to check)
+- pytest installed (`pip install pytest`)
 - A GitHub account
 - A code editor (VS Code recommended)
 
