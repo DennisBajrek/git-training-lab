@@ -48,20 +48,19 @@ def group_anagrams(words: list) -> list:
     Returns:
         List of lists, where each inner list contains anagrams
     """
-    # YOUR CODE HERE
-    #
-    # Hint: Create a way to identify anagrams. Two words are anagrams
-    # if they have the same letters. One approach: sort the letters
-    # of each word to create a "key" - anagrams will have the same key!
-    #
-    # Example: "eat" and "tea" both sort to "aet"
-    #
-    # Algorithm:
-    # 1. Create a dictionary to group words
-    # 2. For each word, create its sorted-letter key
-    # 3. Add the word to the list for that key
-    # 4. Return all the groups
-    pass
+    # TEAMMATE'S IMPLEMENTATION
+    # Using Counter to create character frequency signature
+    from collections import Counter
+
+    anagram_map = {}
+    for word in words:
+        # Create a signature from character counts
+        signature = tuple(sorted(Counter(word).items()))
+        if signature not in anagram_map:
+            anagram_map[signature] = []
+        anagram_map[signature].append(word)
+
+    return list(anagram_map.values())
 
 
 # Don't modify below this line
