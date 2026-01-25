@@ -2,7 +2,7 @@
 
 Welcome to the Git Training Lab! This hands-on environment will teach you Git fundamentals through practical exercises. Take your time—this is about learning, not speed.
 
-**Estimated time:** ~2 hours (but go at your own pace)
+**Estimated time:** ~5-6 hours total (but go at your own pace)
 
 ---
 
@@ -41,6 +41,8 @@ New to Git? Here's what the jargon means:
 ---
 
 ## 🚀 Quick Start (Do This First)
+
+**Prerequisites:** Python 3.8+, Git, a GitHub account, VS Code (recommended)
 
 > **💡 New to the terminal?** The terminal (also called command line) is where you type commands. On Mac: open "Terminal". On Windows: open "Git Bash" (installed with Git) or "Command Prompt". The `$` symbol means "type this command" — don't type the `$` itself!
 
@@ -86,28 +88,6 @@ New to Git? Here's what the jargon means:
 
 **🆘 Having issues?** Check the [Troubleshooting](docs/SETUP.md#troubleshooting) section.
 
-### Prerequisites
-
-- Python 3.8+ installed
-- Git installed (`git --version` to check)
-- pytest installed (`pip install pytest`)
-- A GitHub account
-- A code editor (VS Code recommended)
-
-### Setup
-
-1. **Fork this repository** (click "Fork" button on GitHub)
-2. **Clone your fork** (replace YOUR-USERNAME with your GitHub username):
-   ```bash
-   git clone https://github.com/YOUR-USERNAME/git-training-lab.git
-   cd git-training-lab
-   ```
-3. **Verify setup:**
-   ```bash
-   python --version  # Should show 3.8+
-   git status        # Should show "On branch main"
-   ```
-
 ---
 
 ## 🏗️ Structure
@@ -115,16 +95,17 @@ New to Git? Here's what the jargon means:
 ```
 git-training-lab/
 ├── exercises/
-│   ├── solo/           # Part 1: Individual exercises (1-7)
-│   └── collaborative/  # Part 2: Team exercises (8-9)
+│   ├── solo/           # Exercises 1-7 (fundamentals) and 10-15 (advanced)
+│   └── collaborative/  # Exercises 8-9 (teamwork simulation)
 ├── tests/              # Automated tests (run via GitHub Actions)
-├── docs/               # Learning materials
+├── docs/               # Learning materials and guides
+├── branches/           # Reference files for special branches (instructor use)
 └── .github/workflows/  # CI pipeline
 ```
 
 ---
 
-## 📝 Part 1: Solo Exercises (Fundamentals 1-7)
+## 📝 Part 1: Fundamentals (Exercises 1-7)
 
 Complete these individually. Each exercise has a Python file with TODOs and a corresponding Git task.
 
@@ -138,7 +119,26 @@ Complete these individually. Each exercise has a Python file with TODOs and a co
 | 6 | `reset`, `revert` | Two Sum | ⭐⭐ Medium |
 | 7 | `checkout` (files), `restore` | Merge sorted arrays | ⭐⭐ Medium |
 
-## 📝 Part 2: Advanced Solo Exercises (10-15)
+---
+
+## 👥 Part 2: Collaborative (Exercises 8-9)
+
+These exercises simulate real team scenarios. You'll work with **pre-existing branches** that represent "teammate" work.
+
+| Exercise | Git Focus | Task | Difficulty |
+|----------|-----------|------|------------|
+| 8 | `merge`, conflict resolution | Group anagram checker | ⭐⭐ Medium |
+| 9 | `rebase`, `fetch`, Pull Requests | Valid parentheses | ⭐⭐⭐ Harder |
+
+> **⚠️ Important:** These exercises use special branches that exist on GitHub:
+> - `teammate/exercise-8` — Contains a different implementation for Exercise 8
+> - `main-updated` — Simulates "main getting updates" for Exercise 9
+>
+> You'll need to **fetch** these branches before you can use them. The exercise instructions will guide you through this.
+
+---
+
+## 📝 Part 3: Advanced (Exercises 10-15)
 
 These exercises cover advanced Git concepts that are essential in real-world workflows.
 
@@ -151,29 +151,16 @@ These exercises cover advanced Git concepts that are essential in real-world wor
 | 14 | `blame`, `log -p` | Word Frequency | ⭐⭐ Medium |
 | 15 | `tag` | Version Parser | ⭐⭐ Medium |
 
-### How to Complete Solo Exercises
-
-1. Navigate to the exercise file (e.g., `exercises/solo/exercise_1.py`)
-2. Read the instructions in the file
-3. Complete the Python TODO
-4. Follow the Git instructions in each exercise
-5. Push your changes
-6. Check GitHub Actions to see if tests pass ✅
-
 ---
 
-## 👥 Part 3: Collaborative Exercises (8-9)
+### How to Complete Each Exercise
 
-Complete these with a partner or simulate teamwork using the pre-made branches.
-
-| Exercise | Git Focus | Task | Difficulty |
-|----------|-----------|------|------------|
-| 8 | `merge`, conflict resolution | Group anagram checker | ⭐⭐ Medium |
-| 9 | `rebase`, `fetch`, Pull Requests | Valid parentheses | ⭐⭐⭐ Harder |
-
-### How to Complete Collaborative Exercises
-
-These exercises simulate real team scenarios. You'll work with pre-existing branches that represent "teammate" work.
+1. Navigate to the exercise file (e.g., `exercises/solo/exercise_1.py`)
+2. **Read the entire file** — it contains both the coding task AND Git instructions
+3. Complete the Python TODO
+4. Follow the Git instructions step-by-step
+5. Push your changes
+6. Check GitHub Actions to see if tests pass ✅
 
 ---
 

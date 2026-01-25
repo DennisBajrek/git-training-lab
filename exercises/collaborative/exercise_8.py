@@ -122,21 +122,33 @@ STEP 2: Implement your solution
     $ git commit -m "My implementation of group_anagrams"
 
 =============================================================================
-STEP 3: Try to merge your teammate's branch
+STEP 3: Fetch the teammate's branch from the remote
 =============================================================================
 
-    $ git merge teammate/exercise-8
+    $ git fetch origin teammate/exercise-8
+
+    → This downloads the branch from GitHub to your local machine
+    → Without this step, Git won't know about the teammate's branch!
+
+=============================================================================
+STEP 4: Try to merge your teammate's branch
+=============================================================================
+
+    $ git merge origin/teammate/exercise-8
 
     → You'll see something like:
       CONFLICT (content): Merge conflict in exercises/collaborative/exercise_8.py
       Automatic merge failed; fix conflicts and then commit the result.
 
+    → Note: We use "origin/teammate/exercise-8" (with origin/) because
+      this is a remote-tracking branch we fetched, not a local branch.
+
 =============================================================================
-STEP 4: Examine the conflict
+STEP 5: Examine the conflict
 =============================================================================
 
     $ git status
-    
+
     → Shows the file as "both modified"
 
     Open exercises/collaborative/exercise_8.py in your editor.
@@ -146,10 +158,10 @@ STEP 4: Examine the conflict
     # Your code is here
     =======
     # Teammate's code is here
-    >>>>>>> teammate/exercise-8
+    >>>>>>> origin/teammate/exercise-8
 
 =============================================================================
-STEP 5: Resolve the conflict
+STEP 6: Resolve the conflict
 =============================================================================
 
     To resolve the conflict, you need to:
@@ -166,7 +178,7 @@ STEP 5: Resolve the conflict
     After editing, the file should have NO conflict markers.
 
 =============================================================================
-STEP 6: Complete the merge
+STEP 7: Complete the merge
 =============================================================================
 
     $ git add exercises/collaborative/exercise_8.py
@@ -175,7 +187,7 @@ STEP 6: Complete the merge
     → Git recognizes this as a merge commit
 
 =============================================================================
-STEP 7: Verify the merge
+STEP 8: Verify the merge
 =============================================================================
 
     $ git log --oneline --graph -10
@@ -183,7 +195,7 @@ STEP 7: Verify the merge
     → You should see both branches coming together
 
 =============================================================================
-STEP 8: Test your resolution
+STEP 9: Test your resolution
 =============================================================================
 
     $ python exercises/collaborative/exercise_8.py
@@ -191,7 +203,7 @@ STEP 8: Test your resolution
     → Make sure tests pass!
 
 =============================================================================
-STEP 9: Merge to main and push
+STEP 10: Merge to main and push
 =============================================================================
 
     $ git checkout main

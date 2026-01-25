@@ -20,26 +20,37 @@ git remote add origin https://github.com/YOUR-ORG/git-training-lab.git
 git push -u origin main
 ```
 
-### 3. Create Teammate Branches
+### 3. Create Special Branches
+
+The lab requires two special branches for exercises 8 and 9:
 
 ```bash
 # Branch for Exercise 8 (merge conflict)
-git checkout -b teammate/exercise-8
-cp branches/teammate-exercise-8.py exercises/collaborative/exercise_8.py
+# This branch has a DIFFERENT implementation that conflicts with student solutions
+git checkout -b teammate/exercise-8 main
+# Edit exercises/collaborative/exercise_8.py with alternate implementation
+# (Use Counter-based approach instead of sorting)
 git add exercises/collaborative/exercise_8.py
 git commit -m "Teammate implementation of group_anagrams"
 git push origin teammate/exercise-8
 git checkout main
 
-# Branch for Exercise 9 (rebase)
-git checkout -b main-updated
-mkdir -p utils
-cp branches/main-updated-content.py utils/changelog.py
-git add utils/
-git commit -m "Add changelog and utility functions"
+# Branch for Exercise 9 (rebase practice)
+# This branch simulates "main getting updates" while student works
+git checkout -b main-updated main
+echo "# Changelog" > CHANGELOG.md
+git add CHANGELOG.md
+git commit -m "Add CHANGELOG.md"
+# Add another small commit
+git add README.md  # (after small edit)
+git commit -m "Update README"
 git push origin main-updated
 git checkout main
 ```
+
+**Important:** These branches should:
+- `teammate/exercise-8`: Have the SAME base files as main, but with a different `group_anagrams` implementation
+- `main-updated`: Be a few commits AHEAD of main with non-conflicting changes
 
 ### 4. Have Engineers Fork
 
@@ -49,17 +60,15 @@ Each engineer forks the repo to their own GitHub account, then clones their fork
 
 ## Documentation Structure
 
-The docs are consolidated into 3 main guides:
-
 | File | Contents |
 |------|----------|
-| `SETUP.md` | Git install, config, auth, troubleshooting |
+| `SETUP.md` | Git install, config, auth, troubleshooting, viewing markdown |
 | `GIT_GUIDE.md` | How Git works + fixing mistakes |
 | `WORKFLOW.md` | Jira, Slack, code review practices |
-
-Plus:
-- `SOLUTIONS.md` — Answer key (spoilers!)
-- `VIEWING_MARKDOWN.md` — Help for viewing .md files
+| `GIT_CHEATSHEET.md` | Quick command reference |
+| `COMMON_MISTAKES.md` | 15 common mistakes and fixes |
+| `GIT_VISUAL_GUIDE.md` | ASCII diagrams for visual learners |
+| `SOLUTIONS.md` | Answer key for all 15 exercises (spoilers!)
 
 ---
 

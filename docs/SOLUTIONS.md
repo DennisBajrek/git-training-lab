@@ -139,6 +139,118 @@ def is_valid_parentheses(s: str) -> bool:
 
 ---
 
+## Exercise 10: Binary Search
+
+```python
+def binary_search(arr: list, target: int) -> int:
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+```
+
+---
+
+## Exercise 11: Validate Email
+
+```python
+def validate_email(email: str) -> bool:
+    if not email or ' ' in email:
+        return False
+    if email.count('@') != 1:
+        return False
+    local, domain = email.split('@')
+    if not local or not domain:
+        return False
+    if '.' not in domain:
+        return False
+    parts = domain.split('.')
+    if len(parts[-1]) < 2:
+        return False
+    return True
+```
+
+---
+
+## Exercise 12: Flatten Nested List
+
+```python
+def flatten(nested_list: list) -> list:
+    result = []
+    for item in nested_list:
+        if isinstance(item, list):
+            result.extend(flatten(item))
+        else:
+            result.append(item)
+    return result
+```
+
+---
+
+## Exercise 13: Remove Duplicates
+
+```python
+def remove_duplicates(nums: list) -> list:
+    seen = set()
+    result = []
+    for item in nums:
+        if item not in seen:
+            seen.add(item)
+            result.append(item)
+    return result
+```
+
+---
+
+## Exercise 14: Word Frequency
+
+```python
+def word_frequency(text: str) -> dict:
+    if not text:
+        return {}
+    words = text.lower().split()
+    freq = {}
+    for word in words:
+        cleaned = ''.join(c for c in word if c.isalnum())
+        if cleaned:
+            freq[cleaned] = freq.get(cleaned, 0) + 1
+    return freq
+```
+
+---
+
+## Exercise 15: Version Parser
+
+```python
+def parse_version(version: str) -> dict:
+    parts = version.split('.')
+    if len(parts) != 3:
+        raise ValueError("Invalid version format")
+    return {
+        "major": int(parts[0]),
+        "minor": int(parts[1]),
+        "patch": int(parts[2])
+    }
+
+def compare_versions(v1: str, v2: str) -> int:
+    p1 = parse_version(v1)
+    p2 = parse_version(v2)
+    for key in ["major", "minor", "patch"]:
+        if p1[key] < p2[key]:
+            return -1
+        elif p1[key] > p2[key]:
+            return 1
+    return 0
+```
+
+---
+
 ## Still Stuck?
 
 If the solution doesn't make sense:
