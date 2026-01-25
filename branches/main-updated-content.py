@@ -1,26 +1,38 @@
 """
-MAIN-UPDATED BRANCH CONTENT
-============================
+MAIN-UPDATED BRANCH - Reference Content
+========================================
 
-This file represents an update to main that happened while
-you were working on your feature branch.
+This file shows EXAMPLE content that would be added to the main-updated
+branch to simulate "main getting updates while you work."
 
-This is used for the rebase exercise.
+The actual main-updated branch contains simple, non-conflicting changes:
+- CHANGELOG.md file
+- Minor README updates (like adding a Contributors section)
+
+These changes WON'T conflict with exercises/collaborative/exercise_9.py,
+so students can practice clean rebasing.
 """
 
-# This file is added by a "teammate" to main while you're working
-# It simulates real-world scenario where main moves forward
-
-CHANGELOG = """
+# Example CHANGELOG.md content:
+EXAMPLE_CHANGELOG = """
 # Changelog
 
-## 2024-01-15
-- Added new utility functions
-- Updated documentation
-- Fixed bug in exercise 3
+All notable changes to the Git Training Lab will be documented in this file.
+
+## [Unreleased]
+
+### Added
+- New exercises for advanced Git concepts
+- Comprehensive documentation and guides
+
+### Changed
+- Improved test output formatting
+- Enhanced exercise instructions
 """
 
+# Example README addition:
+EXAMPLE_README_ADDITION = """
+## 👥 Contributors
 
-def utility_function():
-    """A utility function added by a teammate."""
-    return "This was added while you were working!"
+Thanks to everyone who contributed to this training lab!
+"""
