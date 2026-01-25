@@ -25,25 +25,25 @@ def is_palindrome(text: str) -> bool:
     """
     Check if a string is a palindrome.
     Ignore case and non-alphanumeric characters.
-    
+
     Examples:
         is_palindrome("racecar") → True
         is_palindrome("hello") → False
         is_palindrome("A man, a plan, a canal: Panama") → True
         is_palindrome("") → True
         is_palindrome("Was it a car or a cat I saw?") → True
-    
+
     Args:
         text: The string to check
-        
+
     Returns:
         True if palindrome, False otherwise
     """
     # TODO: Implement this function
-    # Hint: 
+    # Hint:
     # 1. Clean the string (remove non-alphanumeric, lowercase)
     # 2. Compare the cleaned string with its reverse
-    # 
+    #
     # Useful: ''.join(c for c in text if c.isalnum())
     pass
 
@@ -60,7 +60,7 @@ if __name__ == "__main__":
         ("Python", False),
         ("a", True),
     ]
-    
+
     print("Testing is_palindrome...")
     for text, expected in test_cases:
         result = is_palindrome(text)
