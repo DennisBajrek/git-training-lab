@@ -38,9 +38,9 @@ jobs:
         echo "╚═══════════════════════════════════════════════════════════════╝"
         echo ""
         
-        # Count passed and failed
-        PASSED=$(grep -c "PASSED" test_output.txt 2>/dev/null || echo "0")
-        FAILED=$(grep -c "FAILED" test_output.txt 2>/dev/null || echo "0")
+        # Count passed and failed (only from main test output with %, not summary)
+        PASSED=$(grep -E "PASSED.*\[.*%\]" test_output.txt 2>/dev/null | wc -l || echo "0")
+        FAILED=$(grep -E "FAILED.*\[.*%\]" test_output.txt 2>/dev/null | wc -l || echo "0")
         TOTAL=$((PASSED + FAILED))
         
         echo "📊 Overall: $PASSED / $TOTAL tests passing"
@@ -50,8 +50,9 @@ jobs:
         check_exercise() {
           local name="$1"
           local label="$2"
-          local pass_count=$(grep "Test${name}.*PASSED" test_output.txt 2>/dev/null | wc -l)
-          local total_count=$(grep "Test${name}::" test_output.txt 2>/dev/null | wc -l)
+          # Use :: suffix and % marker to avoid substring matches and double-counting
+          local pass_count=$(grep "Test${name}::.*PASSED.*\[.*%\]" test_output.txt 2>/dev/null | wc -l)
+          local total_count=$(grep "Test${name}::.*\[.*%\]" test_output.txt 2>/dev/null | wc -l)
           
           if [ "$pass_count" -eq "$total_count" ] && [ "$total_count" -gt 0 ]; then
             printf "✅ %-35s - COMPLETE (%d/%d)\n" "$label" "$pass_count" "$total_count"
