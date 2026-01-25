@@ -365,3 +365,247 @@ class TestExercise9:
         from exercise_9 import is_valid_parentheses
 
         assert is_valid_parentheses("]") is False
+
+
+# =============================================================================
+# Exercise 10: Binary Search (Cherry-Pick)
+# =============================================================================
+class TestExercise10:
+    """Tests for binary_search function."""
+
+    def test_found_middle(self):
+        from exercise_10 import binary_search
+
+        assert binary_search([1, 2, 3, 4, 5], 3) == 2
+
+    def test_found_first(self):
+        from exercise_10 import binary_search
+
+        assert binary_search([1, 2, 3, 4, 5], 1) == 0
+
+    def test_found_last(self):
+        from exercise_10 import binary_search
+
+        assert binary_search([1, 2, 3, 4, 5], 5) == 4
+
+    def test_not_found(self):
+        from exercise_10 import binary_search
+
+        assert binary_search([1, 2, 3, 4, 5], 6) == -1
+
+    def test_empty_list(self):
+        from exercise_10 import binary_search
+
+        assert binary_search([], 1) == -1
+
+    def test_single_element_found(self):
+        from exercise_10 import binary_search
+
+        assert binary_search([1], 1) == 0
+
+    def test_single_element_not_found(self):
+        from exercise_10 import binary_search
+
+        assert binary_search([1], 2) == -1
+
+
+# =============================================================================
+# Exercise 11: Validate Email (Bisect)
+# =============================================================================
+class TestExercise11:
+    """Tests for validate_email function."""
+
+    def test_valid_simple(self):
+        from exercise_11 import validate_email
+
+        assert validate_email("user@example.com") is True
+
+    def test_valid_subdomain(self):
+        from exercise_11 import validate_email
+
+        assert validate_email("test.user@domain.org") is True
+
+    def test_invalid_no_at(self):
+        from exercise_11 import validate_email
+
+        assert validate_email("invalid") is False
+
+    def test_invalid_no_dot(self):
+        from exercise_11 import validate_email
+
+        assert validate_email("no@dot") is False
+
+    def test_invalid_no_local(self):
+        from exercise_11 import validate_email
+
+        assert validate_email("@nodomain.com") is False
+
+    def test_invalid_spaces(self):
+        from exercise_11 import validate_email
+
+        assert validate_email("spaces not@allowed.com") is False
+
+    def test_invalid_empty(self):
+        from exercise_11 import validate_email
+
+        # Verify function works first
+        assert validate_email("a@b.co") is True, "Function not implemented yet"
+        assert validate_email("") is False
+
+    def test_short_tld(self):
+        from exercise_11 import validate_email
+
+        assert validate_email("test@domain.c") is False
+
+
+# =============================================================================
+# Exercise 12: Flatten (Reflog)
+# =============================================================================
+class TestExercise12:
+    """Tests for flatten function."""
+
+    def test_nested(self):
+        from exercise_12 import flatten
+
+        assert flatten([1, [2, 3], [4, [5, 6]]]) == [1, 2, 3, 4, 5, 6]
+
+    def test_simple_nested(self):
+        from exercise_12 import flatten
+
+        assert flatten([[1, 2], [3, 4]]) == [1, 2, 3, 4]
+
+    def test_already_flat(self):
+        from exercise_12 import flatten
+
+        assert flatten([1, 2, 3]) == [1, 2, 3]
+
+    def test_empty(self):
+        from exercise_12 import flatten
+
+        assert flatten([]) == []
+
+    def test_deeply_nested(self):
+        from exercise_12 import flatten
+
+        assert flatten([[[1]]]) == [1]
+
+    def test_mixed_nesting(self):
+        from exercise_12 import flatten
+
+        assert flatten([1, [2, [3, [4, [5]]]]]) == [1, 2, 3, 4, 5]
+
+
+# =============================================================================
+# Exercise 13: Remove Duplicates (Amend/Squash)
+# =============================================================================
+class TestExercise13:
+    """Tests for remove_duplicates function."""
+
+    def test_basic(self):
+        from exercise_13 import remove_duplicates
+
+        assert remove_duplicates([1, 2, 2, 3, 1]) == [1, 2, 3]
+
+    def test_all_same(self):
+        from exercise_13 import remove_duplicates
+
+        assert remove_duplicates([1, 1, 1, 1]) == [1]
+
+    def test_no_duplicates(self):
+        from exercise_13 import remove_duplicates
+
+        assert remove_duplicates([1, 2, 3]) == [1, 2, 3]
+
+    def test_empty(self):
+        from exercise_13 import remove_duplicates
+
+        assert remove_duplicates([]) == []
+
+    def test_strings(self):
+        from exercise_13 import remove_duplicates
+
+        assert remove_duplicates(['a', 'b', 'a', 'c']) == ['a', 'b', 'c']
+
+    def test_preserves_order(self):
+        from exercise_13 import remove_duplicates
+
+        assert remove_duplicates([5, 4, 3, 2, 1, 1, 2, 3]) == [5, 4, 3, 2, 1]
+
+
+# =============================================================================
+# Exercise 14: Word Frequency (Blame/Log)
+# =============================================================================
+class TestExercise14:
+    """Tests for word_frequency function."""
+
+    def test_basic(self):
+        from exercise_14 import word_frequency
+
+        assert word_frequency("hello world hello") == {"hello": 2, "world": 1}
+
+    def test_case_insensitive(self):
+        from exercise_14 import word_frequency
+
+        assert word_frequency("The the THE") == {"the": 3}
+
+    def test_punctuation(self):
+        from exercise_14 import word_frequency
+
+        assert word_frequency("Hello, World!") == {"hello": 1, "world": 1}
+
+    def test_empty(self):
+        from exercise_14 import word_frequency
+
+        assert word_frequency("") == {}
+
+    def test_single_word(self):
+        from exercise_14 import word_frequency
+
+        assert word_frequency("one") == {"one": 1}
+
+    def test_multiple_counts(self):
+        from exercise_14 import word_frequency
+
+        assert word_frequency("a a a b b c") == {"a": 3, "b": 2, "c": 1}
+
+
+# =============================================================================
+# Exercise 15: Version Parser (Tags)
+# =============================================================================
+class TestExercise15:
+    """Tests for version parsing functions."""
+
+    def test_parse_basic(self):
+        from exercise_15 import parse_version
+
+        assert parse_version("1.2.3") == {"major": 1, "minor": 2, "patch": 3}
+
+    def test_parse_zeros(self):
+        from exercise_15 import parse_version
+
+        assert parse_version("0.1.0") == {"major": 0, "minor": 1, "patch": 0}
+
+    def test_parse_large_numbers(self):
+        from exercise_15 import parse_version
+
+        assert parse_version("10.20.30") == {"major": 10, "minor": 20, "patch": 30}
+
+    def test_compare_less_than(self):
+        from exercise_15 import compare_versions
+
+        assert compare_versions("1.2.3", "1.2.4") == -1
+
+    def test_compare_greater_than(self):
+        from exercise_15 import compare_versions
+
+        assert compare_versions("2.0.0", "1.9.9") == 1
+
+    def test_compare_equal(self):
+        from exercise_15 import compare_versions
+
+        assert compare_versions("1.0.0", "1.0.0") == 0
+
+    def test_compare_minor(self):
+        from exercise_15 import compare_versions
+
+        assert compare_versions("1.1.0", "1.0.9") == 1
