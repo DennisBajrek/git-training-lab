@@ -57,6 +57,7 @@ By the end of this lab, you will:
 **📋 Quick References:**
 - [Git Cheat Sheet](docs/GIT_CHEATSHEET.md) — One-page command reference
 - [Common Mistakes](docs/COMMON_MISTAKES.md) — How to fix Git mistakes
+- [Visual Guide](docs/GIT_VISUAL_GUIDE.md) — ASCII diagrams for Git concepts
 
 **🆘 Having issues?** Check the [Troubleshooting](docs/SETUP.md#troubleshooting) section.
 
