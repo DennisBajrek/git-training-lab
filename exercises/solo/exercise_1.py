@@ -29,7 +29,7 @@ def reverse_string(s: str) -> str:
         reverse_string("a") → "a"
 
     Args:
-        s: The string to reverse
+        s: The string to reversess
 
     Returns:
         The reversed string
