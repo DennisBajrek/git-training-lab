@@ -19,6 +19,7 @@ INSTRUCTIONS:
 
 
 def count_vowels(text: str) -> int:
+
     """
     Count the number of vowels (a, e, i, o, u) in a string.
     Case-insensitive.
@@ -38,7 +39,21 @@ def count_vowels(text: str) -> int:
     """
     # TODO: Implement this function
     # Hint: Convert to lowercase first, then count vowels
-    pass
+
+    vowels = "aeiou"
+
+    text = text.lower()
+
+    count = 0
+
+    for letter in text:
+        if letter in vowels:
+            count += 1
+
+
+    return count
+
+    
 
 
 # Don't modify below this line
