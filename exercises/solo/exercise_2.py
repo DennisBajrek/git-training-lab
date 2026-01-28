@@ -40,16 +40,17 @@ def fizzbuzz(n: int) -> list:
     """
     # TODO: Implement FizzBuzz
     # Hint: Use a loop and check divisibility with the modulo operator (%)
-    def fizzbuzz(n: int) -> list:
-        result = []
-        for i in range(1, n + 1):
-            if i % 3 == 0:
-                result.append("Fizz")
-            elif i % 5 == 0:
-                result.append("Buzz")
-            else:
-                result.append(str(i))
-            return result
+    result = []
+    for i in range(1, n + 1):
+        if i % 3 == 0 and i % 5 == 0:
+            result.append ("FizzBuzz")
+        elif i % 3 == 0:
+            result.append("Fizz")             
+        elif i % 5 == 0:
+            result.append("Buzz")
+        else:
+            result.append(str(i))
+    return result
 
 
 # Don't modify below this line
