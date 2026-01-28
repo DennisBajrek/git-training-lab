@@ -47,7 +47,11 @@ def two_sum(nums: list, target: int) -> list:
     # Approach 2 (O(n) - optimal):
     #   Use a dictionary to store seen numbers
     #   For each number, check if (target - number) exists in dict
-    pass
+    for i in range(len(nums)):
+        for j in range (i + 1, len(nums)):
+            if nums[i] + nums[j] == target:
+                return [i, j]
+    return None        
 
 
 # Don't modify below this line
