@@ -21,6 +21,19 @@ INSTRUCTIONS:
 
 
 def find_max(numbers: list) -> int | None:
+    if len(numbers) == 0:
+        return None
+    
+    biggestNumber = numbers[0]
+
+    for number in range (1, len(numbers)):
+        tempNumber = number
+        if tempNumber > biggestNumber:
+           biggestNumber = tempNumber
+
+        return biggestNumber
+    
+
     """
     Find the maximum value in a list of numbers.
     
@@ -78,6 +91,7 @@ STEP 2: Create a new branch for this exercise
 
 STEP 3: Verify you're on the new branch
     $ git branch
+
     
     → The asterisk (*) shows your current branch
     → You should see: * feature/exercise-3
