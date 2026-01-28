@@ -24,15 +24,16 @@ def find_max(numbers: list) -> int | None:
     if len(numbers) == 0:
         return None
     
+    if len(numbers) == 1:
+        return numbers[0]
+    
     biggestNumber = numbers[0]
 
-    for number in range (1, len(numbers)):
-        tempNumber = number
-        if tempNumber > biggestNumber:
-           biggestNumber = tempNumber
+    for i in range(1, len(numbers)):  
+        if numbers[i] > biggestNumber:  
+           biggestNumber = numbers[i] 
 
-        return biggestNumber
-    
+    return biggestNumber
 
     """
     Find the maximum value in a list of numbers.
