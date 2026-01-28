@@ -43,7 +43,10 @@ def fizzbuzz(n: int) -> list:
     def fizzbuzz(n: int) -> list:
         result = []
         for i in range(1, n + 1):
-            result.append(str(i))
+            if i % 3 == 0:
+                result.append("Fizz")
+            else:
+                result.append(str(i))
             return result
 
 
