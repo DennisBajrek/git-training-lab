@@ -52,7 +52,6 @@ def two_sum(nums: list, target: int) -> list:
             if nums[i] + nums[j] == target:
                 return [i, j]
     return None        
-#Test comment
 
 
 # Don't modify below this line
