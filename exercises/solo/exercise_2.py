@@ -40,7 +40,11 @@ def fizzbuzz(n: int) -> list:
     """
     # TODO: Implement FizzBuzz
     # Hint: Use a loop and check divisibility with the modulo operator (%)
-    pass
+    def fizzbuzz(n: int) -> list:
+        result = []
+        for i in range(1, n + 1):
+            result.append(str(i))
+            return result
 
 
 # Don't modify below this line
