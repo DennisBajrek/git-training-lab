@@ -45,7 +45,12 @@ def is_palindrome(text: str) -> bool:
     # 2. Compare the cleaned string with its reverse
     #
     # Useful: ''.join(c for c in text if c.isalnum())
-    pass
+    text = text.lower()
+
+    cleaned = ''.join(c for c in text if c.isalnum())
+
+   # return cleaned == cleaned[::-1]
+
 
 
 # Don't modify below this line
