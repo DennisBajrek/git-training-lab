@@ -73,6 +73,7 @@ if __name__ == "__main__":
         status = "✅" if result == expected else "❌"
         print(f"  {status} merge_sorted_arrays({arr1}, {arr2}) = {result}")
 
+# Hoppsan, fel 
 
 """
 =============================================================================
