@@ -50,7 +50,9 @@ def merge_sorted_arrays(arr1: list, arr2: list) -> list:
     #   - Add the smaller one to result
     #   - Move that pointer forward
     #   - Repeat until both arrays are exhausted
-    pass
+    def merge_sorted_arrays(arr1: list, arr2: list) -> list:
+        return sorted(arr1 + arr2)
+
 
 
 # Don't modify below this line
