@@ -49,7 +49,20 @@ def binary_search(arr: list, target: int) -> int:
     #    c. If arr[mid] < target, search right half (left = mid + 1)
     #    d. If arr[mid] > target, search left half (right = mid - 1)
     # 3. Return -1 if not found
-    pass
+    left = 0
+    right =len(arr) - 1
+
+    while left <= right:
+        mid = (left + right) // 2
+
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+
+    return -1
 
 
 # Don't modify below this line - used for local testing
