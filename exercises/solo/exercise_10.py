@@ -21,7 +21,9 @@ INSTRUCTIONS:
 def binary_search(arr: list, target: int) -> int:
     """
     Find the index of target in a sorted array using binary search.
-
+     
+    Efficient divide-and-conquer search algorithm.
+    Works best on pre-sorted collections!
     Binary search works by repeatedly dividing the search interval in half.
     Much faster than linear search for large sorted arrays!
 
